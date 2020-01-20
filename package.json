@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "lab -v -l -m 0"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@hapi/code": "^8.0.1",
     "@hapi/hapi": "^18.4.0",
-    "@hapi/lab": "^22.0.3",
+    "@hapi/lab": "^21.0.0",
     "nodemon": "^2.0.2"
   }
 }
