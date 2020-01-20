@@ -23,4 +23,12 @@ describe('GET', () => {
     })
     expect(res.statusCode).to.equal(200)
   })
+
+  it('responds "/name" call (no payload) with HTTP 200 ', async () => {
+    const res = await server.inject({
+      method: 'GET',
+      url: '/name'
+    })
+    expect(res.statusCode).to.equal(200)
+  })
 })

@@ -13,6 +13,13 @@ const start = async () => {
       handler: function (request, h) {
         return h.response('Hello World!').code(200)
       }
+    },
+    {
+      method: 'GET',
+      path: '/name',
+      handler: function (request, h) {
+        return h.response('Hello Again!').code(200)
+      }
     }
   ])
 
