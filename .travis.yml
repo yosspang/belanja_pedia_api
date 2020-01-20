@@ -8,3 +8,10 @@ node_js:
 install:
   - npm install
 
+deploy:
+  provider: heroku
+  api_key:
+    secure: 75893537-eb33-40e1-a099-0de9269bd3d6
+  app: trying-travis1
+  on:
+    repo: yosspang/travis-heroku-example
