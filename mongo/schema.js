@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const mongoUrl = 'mongodb+srv://hapiUser:belanja%5Fpedia123@clusterbp-mrpsm.mongodb.net/belanjapedia?retryWrites=true&w=majority'
+const mongoUrl = 'mongodb://apiAdmin:admin123@clusterbp-shard-00-00-mrpsm.mongodb.net:27017,clusterbp-shard-00-01-mrpsm.mongodb.net:27017,clusterbp-shard-00-02-mrpsm.mongodb.net:27017/belanjapedia?replicaSet=ClusterBP-shard-0&ssl=true&authSource=admin'
 // const mongoUrl = 'mongodb://hapiUser:belanja%5Fpedia123@clusterbp-shard-00-01-mrpsm.mongodb.net:27017/belanjapedia?retryWrites=true&w=majority'
 
 mongoose.connect(mongoUrl, {

@@ -24,7 +24,7 @@ describe('GET', () => {
     expect(res.statusCode).to.equal(200)
   })
 
-  it('responds "/belanjapedia" call with correct email with HTTP 200 and correct data', async () => {
+  it('responds "/belanjapedia" call with correct email with HTTP 200 and correct data', { timeout: 10000 }, async () => {
     const res = await server.inject({
       method: 'GET',
       url: '/belanjapedia/test@mail.com'
@@ -33,7 +33,7 @@ describe('GET', () => {
     expect(res.result.first_name).to.equal('First')
   })
 
-  it('responds "/belanjapedia" call with correct email with HTTP 200 and correct data', async () => {
+  it('responds "/belanjapedia" call with correct email with HTTP 200 and correct data', { timeout: 10000 }, async () => {
     const res = await server.inject({
       method: 'GET',
       url: '/belanjapedia/haha@haha.com'
