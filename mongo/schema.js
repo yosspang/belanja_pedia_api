@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const mongoUrl = 'mongodb+srv://hapiUser:belanja%5Fpedia123@clusterbp-mrpsm.mongodb.net/belanjapedia?retryWrites=true&w=majority'
+// const mongoUrl = 'mongodb://hapiUser:belanja%5Fpedia123@clusterbp-shard-00-01-mrpsm.mongodb.net:27017/belanjapedia?retryWrites=true&w=majority'
 
 mongoose.connect(mongoUrl, {
   useNewUrlParser: true,
