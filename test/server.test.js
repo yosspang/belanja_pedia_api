@@ -2,12 +2,15 @@ const Lab = require('@hapi/lab')
 const { expect } = require('@hapi/code')
 const { after, before, describe, it } = exports.lab = Lab.script()
 const { start } = require('../server')
+const mongo = require('../mongo/schema').server
 
+mongo()
 describe('GET', () => {
   let server
 
   before(async () => {
     server = await start()
+    mongo()
     // start transaction
   })
 
