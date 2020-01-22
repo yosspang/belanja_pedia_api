@@ -1,17 +1,17 @@
 const Lab = require('@hapi/lab')
 const { expect } = require('@hapi/code')
-const { afterEach, beforeEach, describe, it } = exports.lab = Lab.script()
+const { after, before, describe, it } = exports.lab = Lab.script()
 const { start } = require('../server')
 
 describe('GET', () => {
   let server
 
-  beforeEach(async () => {
+  before(async () => {
     server = await start()
     // start transaction
   })
 
-  afterEach(async () => {
+  after(async () => {
     await server.stop()
     // rollback
   })
