@@ -1,4 +1,5 @@
 const Hapi = require('@hapi/hapi')
+const { userHandler } = require('./handlers')
 
 const start = async () => {
   const server = new Hapi.Server({ // server config
@@ -16,10 +17,8 @@ const start = async () => {
     },
     {
       method: 'GET',
-      path: '/name',
-      handler: function (request, h) {
-        return h.response('Hello Again!').code(200)
-      }
+      path: '/belanjapedia/{email}',
+      handler: userHandler.getUser
     }
   ])
 
