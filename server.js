@@ -1,5 +1,6 @@
 const Hapi = require('@hapi/hapi')
 const routes = require('./routes')
+const mongo = require('./mongo/schema').server
 
 const start = async () => {
   const server = new Hapi.Server({ // server config
@@ -8,7 +9,7 @@ const start = async () => {
   })
 
   server.route(routes)
-
+  await mongo()
   await server.start()
 
   process.on('unhandledRejection', (err) => {
