@@ -1,5 +1,5 @@
 const Hapi = require('@hapi/hapi')
-const { userHandler } = require('./handlers')
+const routes = require('./routes')
 
 const start = async () => {
   const server = new Hapi.Server({ // server config
@@ -7,20 +7,7 @@ const start = async () => {
     host: '0.0.0.0'
   })
 
-  server.route([ // routes goes here
-    {
-      method: 'GET',
-      path: '/',
-      handler: function (request, h) {
-        return h.response('Hello World!').code(200)
-      }
-    },
-    {
-      method: 'GET',
-      path: '/belanjapedia/{email}',
-      handler: userHandler.getUser
-    }
-  ])
+  server.route(routes)
 
   await server.start()
 

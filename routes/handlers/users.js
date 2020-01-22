@@ -1,4 +1,4 @@
-const { Users } = require('./mongo/schema')
+const { Users } = require('../../mongo/schema')
 
 const getEmail = (email) => {
   return Users.findOne({ email: email })
