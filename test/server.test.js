@@ -9,8 +9,8 @@ describe('GET', () => {
   let server
 
   before(async () => {
+    await mongo()
     server = await start()
-    mongo()
     // start transaction
   })
 
