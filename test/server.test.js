@@ -29,7 +29,7 @@ describe('GET', () => {
   it('responds "/api" call with correct email with HTTP 200 and correct data', { timeout: 10000 }, async () => {
     const res = await server.inject({
       method: 'GET',
-      url: '/api/test@mail.com'
+      url: '/api/user/test@mail.com'
     })
     expect(res.statusCode).to.equal(200)
     expect(res.result.first_name).to.equal('First')
@@ -38,7 +38,7 @@ describe('GET', () => {
   it('responds "/api" call with correct email with HTTP 200 and correct data', { timeout: 10000 }, async () => {
     const res = await server.inject({
       method: 'GET',
-      url: '/api/haha@haha.com'
+      url: '/api/user/haha@haha.com'
     })
     expect(res.statusCode).to.equal(404)
     expect(res.result.first_name).to.not.equal('First')
