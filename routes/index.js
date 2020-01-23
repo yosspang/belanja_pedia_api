@@ -10,7 +10,12 @@ module.exports = [
   },
   {
     method: 'GET',
-    path: '/belanjapedia/{email}',
-    handler: userHandler.getUser
+    path: '/api/user/{email}',
+    handler: userHandler.checkUser
+  },
+  {
+    method: 'POST',
+    path: '/api/register',
+    handler: userHandler.newUser
   }
 ]
