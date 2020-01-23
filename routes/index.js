@@ -1,11 +1,12 @@
 const { userHandler } = require('./handlers/users')
+const { productHandler } = require('./handlers/product')
 
 module.exports = [
   {
     method: 'GET',
     path: '/',
     handler: function (request, h) {
-      return h.response('Hello World!').code(200)
+      return h.response('Root path of Belanja Pedia API').code(200)
     }
   },
   {
@@ -17,5 +18,10 @@ module.exports = [
     method: 'POST',
     path: '/api/register',
     handler: userHandler.newUser
+  },
+  {
+    method: 'GET',
+    path: '/api/products',
+    handler: productHandler.getProducts
   }
 ]

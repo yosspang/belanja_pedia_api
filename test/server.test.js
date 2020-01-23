@@ -43,4 +43,14 @@ describe('GET', () => {
     expect(res.statusCode).to.equal(404)
     expect(res.result.first_name).to.not.equal('First')
   })
+
+  it('responds "/api/register" call with existing email with HTTP 400 and error message', { timeout: 10000 }, async () => {
+    const res = await server.inject({
+      method: 'POST',
+      url: '/api/register',
+      payload: { email: 'test@mail.com' }
+    })
+    expect(res.statusCode).to.equal(400)
+    expect(res.result.message).to.equal('username already taken')
+  })
 })

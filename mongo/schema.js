@@ -23,6 +23,16 @@ const userSchema = new Schema({
   created_at: Date
 })
 
-const Users = mongoose.model('users', userSchema)
+const productSchema = new Schema({
+  id: Number,
+  image: String,
+  name: String,
+  price: Number,
+  description: String,
+  quantity: Number
+})
 
-module.exports = { Users, server }
+const Users = mongoose.model('users', userSchema)
+const Products = mongoose.model('products', productSchema)
+
+module.exports = { Users, Products, server }
