@@ -28,5 +28,10 @@ module.exports = [
     method: 'GET',
     path: '/api/products/image/{url}',
     handler: productHandler.getImage
+  },
+  {
+    method: 'GET',
+    path: '/api/cart',
+    handler: productHandler.getCart
   }
 ]

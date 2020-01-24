@@ -32,7 +32,17 @@ const productSchema = new Schema({
   quantity: Number
 })
 
-const Users = mongoose.model('users', userSchema)
-const Products = mongoose.model('products', productSchema)
+const cartSchema = new Schema({
+  id: Number,
+  image: String,
+  name: String,
+  price: Number,
+  description: String,
+  quantity: Number
+})
 
-module.exports = { Users, Products, server }
+const User = mongoose.model('users', userSchema)
+const Product = mongoose.model('products', productSchema)
+const Cart = mongoose.model('carts', cartSchema)
+
+module.exports = { User, Product, Cart, server }
