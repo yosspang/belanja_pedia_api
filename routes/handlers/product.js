@@ -1,8 +1,8 @@
-const { Products } = require('../../mongo/schema')
+const { Product } = require('../../mongo/schema')
 
 const productHandler = {
   getProducts: async (request, h) => {
-    const productsList = await Products.find().lean()
+    const productsList = await Product.find().lean()
     return h.response(productsList).code(200)
   },
   getImage: async (request, h) => {
