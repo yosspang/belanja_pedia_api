@@ -1,5 +1,6 @@
 const { userHandler } = require('./handlers/users')
 const { productHandler } = require('./handlers/product')
+const { cartHandler } = require('./handlers/carts')
 
 module.exports = [
   {
@@ -30,8 +31,8 @@ module.exports = [
     handler: productHandler.getImage
   },
   {
-    method: 'GET',
+    method: 'POST',
     path: '/api/cart',
-    handler: productHandler.getCart
+    handler: cartHandler.addProductToCart
   }
 ]
