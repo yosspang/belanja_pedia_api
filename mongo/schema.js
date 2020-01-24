@@ -29,15 +29,13 @@ const productSchema = new Schema({
   name: String,
   price: Number,
   description: String,
-  quantity: Number
+  stock: Number
 })
 
 const cartSchema = new Schema({
   id: Number,
-  image: String,
-  name: String,
-  price: Number,
-  description: String,
+  email: String,
+  product_id: Number,
   quantity: Number
 })
 

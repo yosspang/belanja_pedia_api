@@ -1,6 +1,6 @@
 const { userHandler } = require('./handlers/users')
 const { productHandler } = require('./handlers/product')
-const { cartHandler } = require('./handlers/carts')
+const { cartHandler } = require('./handlers/cart')
 
 module.exports = [
   {
@@ -34,5 +34,10 @@ module.exports = [
     method: 'POST',
     path: '/api/cart',
     handler: cartHandler.addProductToCart
+  },
+  {
+    method: 'GET',
+    path: '/api/cart/{email}',
+    handler: cartHandler.getCart
   }
 ]
