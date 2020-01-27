@@ -39,5 +39,10 @@ module.exports = [
     method: 'GET',
     path: '/api/cart/{email}',
     handler: cartHandler.getCart
+  },
+  {
+    method: 'DELETE',
+    path: '/api/cart',
+    handler: cartHandler.removeProductFromCart
   }
 ]
