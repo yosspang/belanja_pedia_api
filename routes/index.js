@@ -21,6 +21,11 @@ module.exports = [
     handler: userHandler.newUser
   },
   {
+    method: 'POST',
+    path: '/api/login',
+    handler: userHandler.loginUser
+  },
+  {
     method: 'GET',
     path: '/api/products',
     handler: productHandler.getProducts

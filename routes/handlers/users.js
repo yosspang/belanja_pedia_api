@@ -23,8 +23,17 @@ const userHandler = {
     const newUser = new User(request.payload)
     await newUser.save()
     return h.response({ message: 'registration success', data: newUser }).code(200)
+  },
+  loginUser: async (request, h) => {
+    const userData = await getEmail(request.payload.email)
+    if (userData === null) {
+      return h.response({ message: 'email is not registered' }).code(404)
+    }
+    if (userData.password !== request.payload.password) {
+      return h.response({ message: 'invalid password' }).code(400)
+    }
+    return h.response({ message: 'login success' }).code(200)
   }
-
 }
 
 module.exports = { userHandler }
