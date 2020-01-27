@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const mongoUrl = 'mongodb://apiAdmin:admin123@clusterbp-shard-00-00-mrpsm.mongodb.net:27017,clusterbp-shard-00-01-mrpsm.mongodb.net:27017,clusterbp-shard-00-02-mrpsm.mongodb.net:27017/belanjapedia?ssl=true&replicaSet=ClusterBP-shard-0&authSource=admin&retryWrites=true&w=majority'
+const mongoUrl = 'mongodb+srv://apiAdmin:admin123@clusterbp-mrpsm.mongodb.net/belanjapedia?retryWrites=true&w=majority'
 
 const server = async () => {
   mongoose.connect(mongoUrl, {

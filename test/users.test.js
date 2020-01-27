@@ -4,7 +4,7 @@ const { after, before, describe, it } = exports.lab = Lab.script()
 const { start } = require('../server')
 const mongo = require('../mongo/schema').server
 
-describe('GET', () => {
+describe('User handler routes test scenarios', () => {
   let server
 
   before(async () => {
@@ -26,7 +26,7 @@ describe('GET', () => {
     expect(res.statusCode).to.equal(200)
   })
 
-  it('responds "/api" call with correct email with HTTP 200 and correct data', { timeout: 10000 }, async () => {
+  it('responds "/api/user/{email}" call using correct email with HTTP 200 and correct data', async () => {
     const res = await server.inject({
       method: 'GET',
       url: '/api/user/test@mail.com'
@@ -35,16 +35,16 @@ describe('GET', () => {
     expect(res.result.first_name).to.equal('First')
   })
 
-  it('responds "/api" call with correct email with HTTP 200 and correct data', { timeout: 10000 }, async () => {
+  it('responds "/api/user/{email}" call using incorrect email with HTTP 404 and correct response', async () => {
     const res = await server.inject({
       method: 'GET',
       url: '/api/user/haha@haha.com'
     })
     expect(res.statusCode).to.equal(404)
-    expect(res.result.first_name).to.not.equal('First')
+    expect(res.result.message).to.equal('not found')
   })
 
-  it('responds "/api/register" call with existing email with HTTP 400 and error message', { timeout: 10000 }, async () => {
+  it('responds "/api/register" call with existing email with HTTP 400 and error message', async () => {
     const res = await server.inject({
       method: 'POST',
       url: '/api/register',

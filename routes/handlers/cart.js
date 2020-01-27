@@ -32,7 +32,7 @@ const cartHandler = {
         }
       },
       {
-        $replaceRoot: { newRoot: { $mergeObjects: [{ $arrayElemAt: ['$product_details', 0] }, '$$ROOT'] } }
+        $replaceRoot: { newRoot: { $mergeObjects: ['$$ROOT', { $arrayElemAt: ['$product_details', 0] }] } }
       },
 
       {
