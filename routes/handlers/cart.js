@@ -50,6 +50,21 @@ const cartHandler = {
     }
     const deletedData = await Cart.findOneAndRemove({ email: request.payload.email, product_id: request.payload.product_id })
     return h.response({ message: 'Delete cart item success', data: deletedData }).code(200)
+  },
+  updateQuantity: async (request, h) => {
+    const id = parseInt(request.payload.product_id)
+    const counter = request.payload.counter
+    console.log('id di handler', id)
+    console.log('counter di handler', counter)
+    if (counter === 'plus') {
+      const inc = await Cart.findOneAndUpdate({ product_id: id }, { $inc: { quantity: 1 } }, { new: true })
+      const result = inc.quantity
+      return h.response(result).code(200)
+    } else if (counter === 'minus') {
+      const dec = await Cart.findOneAndUpdate({ product_id: id }, { $inc: { quantity: -1 } }, { new: true })
+      const result = dec.quantity
+      return h.response(result).code(200)
+    }
   }
 }
 
