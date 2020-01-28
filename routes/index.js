@@ -51,8 +51,8 @@ module.exports = [
     handler: cartHandler.removeProductFromCart
   },
   {
-    method: 'POST',
-    path: '/api/cart/quantity',
+    method: 'PUT',
+    path: '/api/cart',
     handler: cartHandler.updateQuantity
   }
 ]
