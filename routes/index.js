@@ -12,7 +12,16 @@ module.exports = [
       },
       description: 'Belanja Pedia API root path',
       notes: 'Returns root path',
-      tags: ['api']
+      tags: ['api', '/root'],
+      plugins: {
+        'hapi-swagger': {
+          responses: {
+            200: {
+              description: 'Get root path succeeded'
+            }
+          }
+        }
+      }
     }
   }
 ].concat(users, product, cart)

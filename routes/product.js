@@ -9,7 +9,21 @@ module.exports = [
       handler: productHandler.getProducts,
       description: 'Get products list',
       notes: 'Returns list of all products',
-      tags: ['api', 'product']
+      tags: ['api', 'product'],
+      plugins: {
+        'hapi-swagger': {
+          responses: {
+            200: {
+              description: 'Get product list success',
+              schema: Joi.object({
+              })
+            },
+            404: {
+              description: 'User data not found'
+            }
+          }
+        }
+      },
     }
   },
   {
@@ -20,6 +34,18 @@ module.exports = [
       description: 'Get product image',
       notes: 'Returns product image',
       tags: ['api', 'product'],
+      plugins: {
+        'hapi-swagger': {
+          responses: {
+            200: {
+              description: 'Get static image succeeded'
+            },
+            404: {
+              description: 'Image url not found'
+            }
+          }
+        }
+      },
       validate: {
         params: Joi.object({
           url: Joi.string()
