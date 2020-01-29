@@ -6,6 +6,7 @@ const Inert = require('@hapi/inert')
 const Vision = require('@hapi/vision')
 const HapiSwagger = require('hapi-swagger')
 const Pack = require('./package')
+const Blipp = require('blipp')
 
 const start = async () => {
   const server = new Hapi.Server({ // server config
@@ -25,7 +26,7 @@ const start = async () => {
     },
     grouping: 'tags'
   }
-  await server.register([Inert, Vision, { plugin: HapiSwagger, options: swaggerOptions }])
+  await server.register([Inert, Vision, Blipp, { plugin: HapiSwagger, options: swaggerOptions }])
   server.route(routes)
   await mongo()
   await server.start()
@@ -34,7 +35,7 @@ const start = async () => {
     console.log(err)
     process.exit(1)
   })
-  console.log(`Server running at: ${server.info.uri}`)
+  // console.log(`Server running at: ${server.info.uri}`)
   return server
 }
 
