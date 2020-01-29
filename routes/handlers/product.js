@@ -1,4 +1,5 @@
 const { Product } = require('../../mongo/schema')
+const Boom = require('@hapi/boom')
 
 const productHandler = {
   getProducts: async (request, h) => {
@@ -6,6 +7,9 @@ const productHandler = {
     return h.response(productsList).code(200)
   },
   getImage: async (request, h) => {
+    if (await Product.findOne({ image: request.params.url }) == null) {
+      return Boom.notFound('Image not found')
+    }
     return h.file(`${request.params.url}`).code(200)
   }
 }

@@ -1,4 +1,5 @@
 const { Cart } = require('../../mongo/schema')
+const Boom = require('@hapi/boom')
 
 const addNewCart = (request) => {
   const id = Math.floor(Math.random() * (10 ** 16))
@@ -12,10 +13,10 @@ const cartHandler = {
     let cartData = await Cart.findOne({ email: request.payload.email, product_id: request.payload.product_id })
     if (cartData === null) {
       cartData = await addNewCart(request)
-      return h.response({ message: 'success add to cart', data: cartData }).code(200)
+      return h.response({ message: 'Success add to cart', data: cartData }).code(200)
     }
     const updateData = await Cart.findOneAndUpdate({ email: request.payload.email, product_id: request.payload.product_id }, { $inc: { quantity: 1 } }, { new: true })
-    return h.response({ message: 'success add to cart', data: updateData }).code(200)
+    return h.response({ message: 'Success add to cart', data: updateData }).code(200)
   },
   getCart: async (request, h) => {
     if (Cart.findOne({ email: request.params.email }) === null) {
@@ -46,7 +47,7 @@ const cartHandler = {
   removeProductFromCart: async (request, h) => {
     const cartData = await Cart.findOne({ email: request.payload.email, product_id: request.payload.product_id })
     if (cartData === null) {
-      return h.response({ message: 'Not Found' }).code(404)
+      return Boom.notFound()
     }
     const deletedData = await Cart.findOneAndRemove({ email: request.payload.email, product_id: request.payload.product_id })
     return h.response({ message: 'Delete cart item success', data: deletedData }).code(200)
