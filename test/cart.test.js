@@ -43,7 +43,7 @@ describe('Cart handler routes:', () => {
       payload: { email: 'test0@mail.com', product_id: 1 }
     })
     expect(res.statusCode).to.equal(200)
-    expect(res.result.message).to.equal('success add to cart')
+    expect(res.result.message).to.equal('Success add to cart')
   })
 
   it('responds "/api/cart" DELETE call using correct data with HTTP 200 and correct data', async () => {

@@ -33,7 +33,7 @@ describe('User handler routes:', () => {
       url: '/api/user/haha@haha.com'
     })
     expect(res.statusCode).to.equal(404)
-    expect(res.result.message).to.equal('not found')
+    expect(res.result.message).to.equal('Not Found')
   })
 
   it('responds "/api/register" call with existing email with HTTP 400 and error message', async () => {
@@ -49,6 +49,6 @@ describe('User handler routes:', () => {
       }
     })
     expect(res.statusCode).to.equal(400)
-    expect(res.result.message).to.equal('username already taken')
+    expect(res.result.message).to.equal('Email already taken')
   })
 })
