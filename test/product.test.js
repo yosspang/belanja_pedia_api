@@ -4,7 +4,7 @@ const { after, before, describe, it } = exports.lab = Lab.script()
 const { start } = require('../server')
 const mongo = require('../mongo/schema').server
 
-describe('Product handler routes test scenarios', () => {
+describe('Product handler routes:', () => {
   let server
 
   before(async () => {

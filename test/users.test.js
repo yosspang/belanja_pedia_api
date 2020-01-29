@@ -4,7 +4,7 @@ const { after, before, describe, it } = exports.lab = Lab.script()
 const { start } = require('../server')
 const mongo = require('../mongo/schema').server
 
-describe('User handler routes test scenarios', () => {
+describe('User handler routes:', () => {
   let server
 
   before(async () => {
@@ -16,14 +16,6 @@ describe('User handler routes test scenarios', () => {
   after(async () => {
     await server.stop()
     // rollback
-  })
-
-  it('responds "/" call (no payload) with HTTP 200 ', async () => {
-    const res = await server.inject({
-      method: 'GET',
-      url: '/'
-    })
-    expect(res.statusCode).to.equal(200)
   })
 
   it('responds "/api/user/{email}" call using correct email with HTTP 200 and correct data', async () => {
@@ -48,7 +40,13 @@ describe('User handler routes test scenarios', () => {
     const res = await server.inject({
       method: 'POST',
       url: '/api/register',
-      payload: { email: 'test@mail.com' }
+      payload: {
+        email: 'test@mail.com',
+        password: 'string',
+        first_name: 'string',
+        last_name: 'string',
+        address: 'string'
+      }
     })
     expect(res.statusCode).to.equal(400)
     expect(res.result.message).to.equal('username already taken')
