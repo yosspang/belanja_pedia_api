@@ -54,15 +54,20 @@ const cartHandler = {
   },
   updateQuantity: async (request, h) => {
     const id = parseInt(request.payload.product_id)
+    const email = request.payload.email
     const counter = request.payload.counter
     console.log('id di handler', id)
     console.log('counter di handler', counter)
+    if (await Cart.findOne({ email: request.payload.email, product_id: request.payload.product_id }) == null) {
+      return Boom.notFound('Cart data not found')
+    }
     if (counter === 'plus') {
-      const inc = await Cart.findOneAndUpdate({ product_id: id }, { $inc: { quantity: 1 } }, { new: true })
+      const inc = await Cart.findOneAndUpdate({ email: email, product_id: id }, { $inc: { quantity: 1 } }, { new: true })
       const result = inc.quantity
       return h.response(result).code(200)
-    } else if (counter === 'minus') {
-      const dec = await Cart.findOneAndUpdate({ product_id: id }, { $inc: { quantity: -1 } }, { new: true })
+    }
+    if (counter === 'minus') {
+      const dec = await Cart.findOneAndUpdate({ email: email, product_id: id }, { $inc: { quantity: -1 } }, { new: true })
       const result = dec.quantity
       return h.response(result).code(200)
     }

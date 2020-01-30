@@ -24,7 +24,7 @@ describe('User handler routes:', () => {
       url: '/api/user/test@mail.com'
     })
     expect(res.statusCode).to.equal(200)
-    expect(res.result.first_name).to.equal('First')
+    expect(res.result.first_name).to.equal('Dude')
   })
 
   it('responds "/api/user/{email}" call using incorrect email with HTTP 404 and correct response', async () => {

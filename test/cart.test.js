@@ -64,4 +64,22 @@ describe('Cart handler routes:', () => {
     expect(res.statusCode).to.equal(404)
     expect(res.result.message).to.equal('Not Found')
   })
+  it('responds "/api/cart" PUT call using correct data with HTTP 200 and updated data', async () => {
+    const res = await server.inject({
+      method: 'PUT',
+      url: '/api/cart',
+      payload: { email: 'test2@mail.com', product_id: 1, counter: 'plus' }
+    })
+    expect(res.statusCode).to.equal(200)
+    expect(res.result).to.equal(2)
+  })
+  it('responds "/api/cart" PUT call using correct data with HTTP 200 and updated data', async () => {
+    const res = await server.inject({
+      method: 'PUT',
+      url: '/api/cart',
+      payload: { email: 'test2@mail.com', product_id: 1, counter: 'minus' }
+    })
+    expect(res.statusCode).to.equal(200)
+    expect(res.result).to.equal(1)
+  })
 })

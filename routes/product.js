@@ -18,12 +18,15 @@ module.exports = [
               schema: Joi.object({
               })
             },
+            400: {
+              description: 'Invalid payload data format'
+            },
             404: {
               description: 'User data not found'
             }
           }
         }
-      },
+      }
     }
   },
   {
@@ -39,6 +42,9 @@ module.exports = [
           responses: {
             200: {
               description: 'Get static image succeeded'
+            },
+            400: {
+              description: 'Invalid payload data format'
             },
             404: {
               description: 'Image url not found'

@@ -20,6 +20,9 @@ module.exports = [
                 data: Joi.object()
               })
             }
+          },
+          400: {
+            description: 'Invalid payload data format'
           }
         }
       },
@@ -46,6 +49,9 @@ module.exports = [
             200: {
               description: 'Get cart data succeeded',
               schema: Joi.object([])
+            },
+            400: {
+              description: 'Invalid payload data format'
             },
             404: {
               description: 'User data not found'
@@ -79,6 +85,9 @@ module.exports = [
                 data: Joi.object()
               })
             },
+            400: {
+              description: 'Invalid payload data format'
+            },
             404: {
               description: 'Cart data not found'
             }
@@ -97,6 +106,36 @@ module.exports = [
   {
     method: 'PUT',
     path: '/api/cart',
-    handler: cartHandler.updateQuantity
+    options: {
+      handler: cartHandler.updateQuantity,
+      description: 'Update cart quantity data of specified user email and product id',
+      notes: 'Returns updated quantity',
+      tags: ['api', 'cart'],
+      plugins: {
+        'hapi-swagger': {
+          responses: {
+            200: {
+              description: 'Update cart quantity succeeded',
+              schema: Joi.number()
+            },
+            400: {
+              description: 'Invalid payload data format'
+            },
+            404: {
+              description: 'Cart data not found'
+            }
+          }
+        }
+      },
+      validate: {
+        payload: Joi.object({
+          email: Joi.string().email()
+            .required(),
+          product_id: Joi.number().min(1).required(),
+          counter: Joi.string().valid('plus', 'minus')
+            .required()
+        }).label('UpdateCartModel')
+      }
+    }
   }
 ]

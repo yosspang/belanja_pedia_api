@@ -27,6 +27,9 @@ module.exports = [
             },
             404: {
               description: 'User data not found'
+            },
+            400: {
+              description: 'Invalid payload data format'
             }
           }
         }
@@ -91,6 +94,9 @@ module.exports = [
               schema: Joi.object({
                 message: Joi.string()
               })
+            },
+            400: {
+              description: 'Invalid payload data format'
             },
             401: {
               description: 'Incorrect password'
