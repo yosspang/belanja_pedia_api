@@ -1,7 +1,7 @@
-# Belanja Pedia API
-
-API to support Belanja Pedia App.
+# Belanja Pedia API 
 [![Build Status](https://img.shields.io/travis/yosspang/belanja_pedia_api.svg?style=flat-square)](http://travis-ci.org/yosspang/belanja_pedia_api) [![Code Style](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](https://standardjs.com/)
+API built on [Hapi.JS](https://hapi.dev/) to support [Belanja Pedia App](https://github.com/yosspang/belanja_pedia).
+
 
 ## Documentation
 [API Routes Documentation](http://belanja-pedia-api.herokuapp.com/documentation)
