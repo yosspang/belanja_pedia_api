@@ -12,7 +12,7 @@ Make sure you have [Node.JS LTS version](https://nodejs.org/en/download/) instal
 Install the dependencies and start the server
 ```sh
 $ git clone https://github.com/yosspang/belanja_pedia_api.git
-$ cd belanja-pedia-api
+$ cd belanja_pedia_api
 $ npm install 
 $ npm run dev
 ```
