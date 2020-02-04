@@ -78,9 +78,18 @@ module.exports = [
             },
             400: {
               description: 'Invalid payload data format'
+            },
+            404: {
+              description: 'Categories not found'
             }
           }
         }
+      },
+      validate: {
+        params: Joi.object({
+          type: Joi.string()
+            .required().description('Type categories (example: Fashion)')
+        })
       }
     }
   },
