@@ -59,5 +59,29 @@ module.exports = [
         })
       }
     }
-  }
+  },
+  {
+    method: 'GET',
+    path: '/api/products/categories/{type}',
+    options: {
+      handler: productHandler.filterProduct,
+      description: 'Get products filter categories',
+      notes: 'Returns list of products by categories',
+      tags: ['api', 'product'],
+      plugins: {
+        'hapi-swagger': {
+          responses: {
+            200: {
+              description: 'Get product list success',
+              schema: Joi.object({
+              })
+            },
+            400: {
+              description: 'Invalid payload data format'
+            }
+          }
+        }
+      }
+    }
+  },
 ]
