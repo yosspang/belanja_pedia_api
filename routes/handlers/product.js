@@ -13,7 +13,7 @@ const productHandler = {
     return h.file(`${request.params.url}`).code(200)
   },
   filterProduct: async (request, h) => {
-    const filterProduct = await Product.find({categories: request.params.categories})
+    const filterProduct = await Product.find({categories: request.params.type})
     return h.response(filterProduct).code(200)
   }
 }

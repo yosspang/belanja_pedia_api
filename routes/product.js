@@ -62,7 +62,7 @@ module.exports = [
   },
   {
     method: 'GET',
-    path: '/api/products/categories/{type}',
+    path: '/api/categories/{type}',
     options: {
       handler: productHandler.filterProduct,
       description: 'Get products filter categories',
