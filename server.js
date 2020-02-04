@@ -15,7 +15,8 @@ const start = async () => {
     routes: {
       files: {
         relativeTo: Path.join(__dirname, 'catalogue')
-      }
+      },
+      cors: true
     }
   })
 
